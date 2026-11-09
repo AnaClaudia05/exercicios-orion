@@ -1,0 +1,38 @@
+name: conferencia-prod
+
+services:
+  api:
+    build:
+      context: ./api
+      target: prod
+    image: conferencia-api:prod
+    ports:
+      - "3001:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - rede_conferencia
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - dados_db:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - rede_conferencia
+
+volumes:
+  dados_db:
+
+networks:
+  rede_conferencia: 
