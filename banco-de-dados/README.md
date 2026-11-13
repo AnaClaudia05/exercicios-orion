@@ -18,4 +18,13 @@ Serviços: db_postgres (porta 5432) e db_mongo (porta 27017), com volumes nomead
 
 Os prints dos resultados estão na pasta prints de cada exercício.
 
-O trecho do exercício 4 sobre docker-compose.dev.yml e docker-compose.prod.yml veio por engano do exercício de Docker, como a Cinthia confirmou no canal. Por isso fiz só a parte de MongoDB.
+## Extra: ambientes dev e prod
+O dev/prod do exercício 4 era opcional, mas fiz para treinar o que vi na aula de Docker:
+- docker-compose.dev.yml (projeto bd-dev): portas 5432 e 27017, pasta dos scripts montada.
+- docker-compose.prod.yml (projeto bd-prod): portas 5433 e 27018, sem volume de código e com restart automático.
+
+Os dois sobem ao mesmo tempo, cada um com seus volumes. Para provar a independência, rodei o exercício 2 só no dev: o Bruno mudou de curso no dev (curso_id 2) e continuou no curso 1 no prod. Prints em prints-dev-prod.
+
+docker compose -f docker-compose.dev.yml up -d
+
+docker compose -f docker-compose.prod.yml up -d
