@@ -1,5 +1,5 @@
 -- Exercício 1 - SQL básico
--- Apago antes de criar para poder rodar o script de novo do zero
+-- Remove as tabelas, se já existirem, para o script poder rodar de novo do zero
 DROP TABLE IF EXISTS alunos;
 DROP TABLE IF EXISTS cursos;
 

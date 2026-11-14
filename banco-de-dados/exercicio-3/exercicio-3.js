@@ -1,5 +1,5 @@
 // Exercício 3 - CRUD básico no MongoDB
-// Apago a coleção antes para poder rodar o script de novo do zero
+// Remove a coleção, se já existir, para o script poder rodar de novo do zero
 db.posts.drop();
 db.createCollection('posts');
 
